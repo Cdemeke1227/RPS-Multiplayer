@@ -1,0 +1,215 @@
+body {
+    background-image: url("../images/background/darkness.png");
+    color: white;
+}
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    margin-right: 50px;
+    margin-left: 50px;
+    width: 100%;
+}
+.titleHeading {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 210px;
+    background: white;
+    border: 1px solid  #42b742;
+    box-shadow: 0 0 1em .3em  #42b742;
+}
+.gameOutcome {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 100px;
+    background: white;
+    border: 1px solid  #42b742;
+    box-shadow: 0 0 1em .3em  #42b742;
+}
+#outcomeBox {
+    width: 100%;
+    text-align: center;
+}
+#messagOutcome {
+    width: 100%;
+    text-align: center;
+}
+#Outcome {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 50px;
+    width: 100%;    
+    background: black
+}
+#playerNameInput {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 50px;
+    width: 100%;
+}
+#title {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 50px;
+    width: 100%;    
+    background: black
+}
+#welcome {
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 30px;
+    width: 100%;    
+    background: black
+}
+#numberOfPlayers {
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 30px;
+    width: 100%;    
+    background: black
+}
+#turn {
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 30px;
+    width: 100%;    
+    background: black
+}
+#playerNameForm {
+    width: 100%;
+}
+#nameInput {
+    margin-right: 5px;
+    margin-left: 30%;
+    width: 40%;
+    background: black;
+    color: white;
+}
+.playersWindows {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 400px;
+    background: white;
+    border: 1px solid  #42b742;
+    box-shadow: 0 0 1em .3em  #42b742;
+}
+.playerOneWindow {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background: black;
+    box-shadow: inset 0 0 1em .3em  #42b742;
+}
+.playerMid {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: black;
+    box-shadow: inset 0 0 1em .3em  #42b742;
+}
+
+.playerTwoWindow {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background: black;
+    box-shadow: inset 0 0 1em .3em  #42b742;
+}
+#options1 {
+    margin-top: 10px;
+}
+#options2 {
+    margin-top: 10px;
+}
+.messageBoard {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 200px;
+    background: white;
+    border: 1px solid  #42b742;
+    box-shadow: 0 0 1em .3em  #42b742;
+}
+#messageBox {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 130px;
+    width: 100%;
+    background: black;
+    color: white;
+}
+#messageForm {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 20px;
+    width: 100%;
+}
+#messageInput {
+    margin-right: 5px;
+    margin-left: 10%;
+    width: 70%;   
+    background: black;
+    color: white;
+}
+#rpslsp_1 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#rock {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 50%;
+}
+#paper {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 50%;
+}
+#scissors {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 50%;
+}
+#lizard {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 50%;
+}
+#spock {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 50%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: .5rem;
+}
+h2 {
+    text-align: center;
+    font-size: 1rem;
+    padding: .5rem;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>RPS Multiplayer</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row titleHeading rounded">
+            <div class="row rounded" id="title">
+                <div class="col"></div>
+                <div class="col">
+                    <h1>Rock Papper Scissors</h1>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row rounded" id="welcome">
+                <div class="col"></div>
+                <div class="col">
+                    <h2 id="playerWelcome">Enter Name Then Press Start. </h2>
+                    <h2 id="playerAlert">Game is Full, come back later</h2>
+                </div>
+                <div class="col"></div>
+            </div>
+            
+            <div class="row rounded" id="turn">
+                <div class="col"></div>
+                <div class="col">
+                    <h2 id="playerTurn">Make Your Selection Below.</h2>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row" id="playerNameInput">
+                <form class="form-inline" id="playerNameForm">
+                    <input class="form-control" id="nameInput" type="text" placeholder="Name">
+                    <input class="btn btn-dark" id="addName" type="submit" value="Start">
+                </form>
+            </div>
+        </div>
+        <div class="row playersWindows rounded">
+            <div class="col-lg-4 playerOneWindow rounded">
+                <div id="options1">
+                    <h2 class="choice" id="playerOneRock" value="r">Rock</h2>
+                    <h2 class="choice" id="playerOnePaper" value="p">Paper</h2>
+                    <h2 class="choice" id="playerOneScissors" value="s">Scissors</h2>
+                    <h2 class="choice" id="playerOneLizard" value="l">Lizard</h2>
+                    <h2 class="choice" id="playerOneSpock" value="v">Spock</h2>
+                </div>
+                <div id="choice1Img"></div>
+                <h2 id="playerOneChoice"></h2>
+                <div>
+                    <h2 id="playerOneName"></h2>
+                </div>
+                <div>
+                    <h2 class="playerOneStats"></h2>
+                </div>
+            </div>
+
+            <div class="col-lg-3 playerMid rounded" id="rpsImage"></div>
+
+            <div class="col-lg-4 playerTwoWindow rounded">
+                
+                <div id="choice2Img"></div>
+                <h2 id="playerTwoChoice"></h2>
+                <div>
+                    <h2 id="playerTwoName"></h2>
+                </div>
+                <div>
+                    <h2 class="playerTwoStats"></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row gameOutcome rounded">
+
+            <div class="row rounded" id="Outcome">
+                <div id="outcomeBox">
+                    <h2 id="messageOutcome"></h2>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row messageBoard rounded">
+            <div class="rounded" id="messageBox">
+                <h2 id="message"></h2>
+            </div>
+            <form class="form-inline" id="messageForm">
+                <input class="form-control" id="messageInput" type="text" placeholder="Message">
+                <input class="btn btn-dark" id="sendButton" type="submit" value="Send">
+            </form>
+        </div>
+
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyC9y8awQVK3xqCi6W5YgCpqMm-BAht-VIk",
+            authDomain: "rps-multi-93213.firebaseapp.com",
+            databaseURL: "https://rps-multi-93213.firebaseio.com",
+            projectId: "rps-multi-93213",
+            storageBucket: "rps-multi-93213.appspot.com",
+            messagingSenderId: "346894686859"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="./assets/javascript/app.js"></script>
+</body>
+
+</html>
