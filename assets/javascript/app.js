@@ -72,16 +72,16 @@ $(function () {
     //------------------------------------------------
     //Check to see how many connections are on page
     //------------------------------------------------
-    // // When the client's connection state changes...
-    // connected.on("value", function (snapshot) {
-    //     // If they are connected..
-    //     if (snapshot.val()) {
-    //         // Add user to the connections list.
-    //         var con = connections.push(true);
-    //         // Remove user from the connection list when they disconnect.
-    //         con.onDisconnect().remove();
-    //     }
-    // });
+    // When the client's connection state changes...
+    connected.on("value", function (snapshot) {
+        // If they are connected..
+        if (snapshot.val()) {
+            // Add user to the connections list.
+            var con = connections.push(true);
+            // Remove user from the connection list when they disconnect.
+            con.onDisconnect().remove();
+        }
+    });
     // When first loaded or when the connections list changes...
     connections.once("value", function (snapshot) {
         // console.log(Object.keys(snapshot.val()));
