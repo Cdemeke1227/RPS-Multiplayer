@@ -1,22 +1,5 @@
 $(function () {
-    // PsudoCode
-    // First Create HTML
-    // Check to see how many connections are on page
-    // Create players object
-    // Allow player one to log in, and create player one object (name, losses, wins) display what player they are
-    // Allow player two to log in, and create player two object (name, losses, wins) display what player they are
-    // Turn indicator object is created, shows who's turn it is
-
-    // Player one selects options, get stored in player one object under choice
-    // player two selects options, get sorted in player two object under choice
-
-    // logic selects winner, counts wins/losses in plyer objects, shows outcome in middle window
-
-
-    // player can add message in chat, it will display in message board
-    // if player leaves game message board will show disconnect message
-
-    // Create a variable to reference the database
+    // R-P-S-L-SP
     //------------
 
     var db = firebase.database();
@@ -67,6 +50,7 @@ $(function () {
     //------------------------------------------------
     $('#playerAlert').hide()
     $('#playerCount').hide();
+    $('#turn').hide();
     $('#playerTurn').hide();
     $("#options1").hide();
     //------------------------------------------------
@@ -127,6 +111,7 @@ $(function () {
         if (con) {
             playerOne = snapshot.val()[playerOneObj.number];
             playerTwo = snapshot.val()[playerTwoObj.number];
+            pageFunctions.showPlayerTwoInfo();
             if (snapshot.val()[playerOneObj.number].turn === "Done" && snapshot.val()[playerTwoObj.number].turn === "Done") {
                 console.log("Are you crazy");
                 playerOne = snapshot.val()[playerOneObj.number];
@@ -137,8 +122,8 @@ $(function () {
                 move2 = playerTwo.choice;
                 move1Text = playerOne.choiceText;
                 move2Text = playerTwo.choiceText;
-                DOMFunctions.showMove2();
-                DOMFunctions.showPlayerTwoInfo();
+                pageFunctions.showMove2();
+                pageFunctions.showPlayerTwoInfo();
                 gameLogic();
                 con.update({
                     wins: playerOneWins,
@@ -146,10 +131,9 @@ $(function () {
                     ties: ties,
                     turn: "Ready"
                 })
-                DOMFunctions.scoreBoard1();
-                setTimeout(DOMFunctions.nextGame, 5000);
+                pageFunctions.scoreBoard1();
+                setTimeout(pageFunctions.nextGame, 5000);
             }
-
         }
     });
 
@@ -157,7 +141,7 @@ $(function () {
 
     chats.on("child_added", function (childsnapshot) {
         if (childsnapshot.val()) {
-            DOMFunctions.showChats(childsnapshot);
+            pageFunctions.showChats(childsnapshot);
         }
     });
 
@@ -166,7 +150,7 @@ $(function () {
     //------------------------------------------------
     // DOM Section
     //------------------------------------------------
-    var DOMFunctions = {
+    var pageFunctions = {
         //---------------------
         joinGame: function () {
             $('#playerNameForm').hide();
@@ -206,7 +190,7 @@ $(function () {
             $("#playerOneChoice").text(choiceText);
             $("#options1").hide();
             $("#choice1Img").html('<img  src="' + images.image[imageNum1] + '" alt = "' + images.alt[imageNum1] + '" class="rpslsp" id="' + images.Id[imageNum1] + '">');
-            DOMFunctions.scoreBoard1();
+            pageFunctions.scoreBoard1();
         },
         //---------------------
         showMove2: function () {
@@ -243,7 +227,7 @@ $(function () {
             $("#rpsImage").html('<img  src="' + images.image[count] + '" alt = "' + images.alt[count] + '" class="rpslsp" id="' + images.Id[count] + '">');
         },
         nextImage: function () {
-            setTimeout(DOMFunctions.rotateImages, 500);
+            setTimeout(pageFunctions.rotateImages, 500);
             // console.log(count);
             if (count === images.image.length - 1) {
                 count = -1;
@@ -261,7 +245,7 @@ $(function () {
             $("#rpsImage").show();
             move1 = null;
             move2 = null;
-            DOMFunctions.scoreBoard1();
+            pageFunctions.scoreBoard1();
         },
         //---------------------
         showChats: function (snap) {
@@ -429,16 +413,17 @@ $(function () {
             });
             // DOM
         }
-        DOMFunctions.joinGame();
+        pageFunctions.joinGame();
     });
     //------------------------------------------------\
     //------------------------------------------------
 
     $("#addName").on("click", function (e) {
         e.preventDefault()
-        showImage = setInterval(DOMFunctions.nextImage, 1000);
+        showImage = setInterval(pageFunctions.nextImage, 1000);
         $(".startImg").hide();
         $("#options1").show();
+        $('#turn').show();
         $('#playerTurn').show();
     });
 
@@ -446,7 +431,7 @@ $(function () {
     $(".choice").on("click", function () {
         choice = $(this).attr("value");
         choiceText = $(this).text();
-        DOMFunctions.showMove1();
+        pageFunctions.showMove1();
         con.update({
             choice: choice,
             choiceText: choiceText,
