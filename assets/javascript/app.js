@@ -22,6 +22,7 @@ $(function () {
     var db = firebase.database();
     var connections = db.ref("/connections");
     var connected = db.ref(".info/connected");
+    var chats = db.ref("chat");
 
     //------------
     var con, name;
@@ -152,22 +153,13 @@ $(function () {
         }
     });
 
-    //------------------------------------------------
-    // // Name capture Button Click Player One
-    $("#addName").on("click", function () {
-        // Don't refresh the page!
-        event.preventDefault();
-        name = $("#nameInput").val().trim();
-        playerOneObj.name = name;
-        if (playerOneObj.name.length > 0) {
-            con.update({
-                name: playerOneObj.name
-            });
-            // DOM
+    chats.remove();
+
+    chats.on("child_added", function (childsnapshot) {
+        if (childsnapshot.val()) {
+            DOMFunctions.showChats(childsnapshot);
         }
-        DOMFunctions.joinGame();
     });
-    //------------------------------------------------
 
     //------------------------------------------------
 
@@ -192,22 +184,22 @@ $(function () {
 
             switch (choice) {
                 case "r":
+                    imageNum1 = 0;
+                    break;
+                case "p":
                     imageNum1 = 1;
                     break;
-                case "p":
+                case "s":
                     imageNum1 = 2;
                     break;
-                case "s":
+                case "l":
                     imageNum1 = 3;
                     break;
-                case "l":
+                case "v":
                     imageNum1 = 4;
                     break;
-                case "v":
-                    imageNum1 = 5;
-                    break;
                 case "p":
-                    imageNum1 = 6;
+                    imageNum1 = 5;
             }
             // console.log(imageNum1);
 
@@ -220,25 +212,26 @@ $(function () {
         showMove2: function () {
             switch (move2) {
                 case "r":
+                    imageNum2 = 0;
+                    break;
+                case "p":
                     imageNum2 = 1;
                     break;
-                case "p":
+                case "s":
                     imageNum2 = 2;
                     break;
-                case "s":
+                case "l":
                     imageNum2 = 3;
                     break;
-                case "l":
+                case "v":
                     imageNum2 = 4;
                     break;
-                case "v":
-                    imageNum2 = 5;
-                    break;
                 case "p":
-                    imageNum2 = 6;
+                    imageNum2 = 5;
             }
             $("#playerTwoChoice").text(move2Text);
-            $("#options2").hide();
+            $(".startImg").hide();
+            $("#rpsImage").hide();
             $("#choice2Img").html('<img  src="' + images.image[imageNum2] + '" alt = "' + images.alt[imageNum2] + '" class="rpslsp" id="' + images.Id[imageNum2] + '">');
         },
         //---------------------
@@ -265,44 +258,48 @@ $(function () {
             $("#choice1Img").empty();
             $("#choice2Img").empty();
             $("#options1").show();
-            $("#options2").show();
+            $("#rpsImage").show();
             move1 = null;
             move2 = null;
-            DOMFunctions.scoreBoard1()
+            DOMFunctions.scoreBoard1();
+        },
+        //---------------------
+        showChats: function (snap) {
+            var chatMessage = snap.val();
+
+            var chatDiv = $('<div class="chatMessage">');
+            chatDiv.html(
+                '<span class="sender">' + chatMessage.sender +
+                '</span>: ' + chatMessage.message);
+            $("#messageBox").prepend(chatDiv)
         }
+        //---------------------
+
     }
     //------------------------------------------------
 
     //------------------------------------------------
     var images = {
         image: [
-            "./assets/images/rpslsp.jpg",
             "./assets/images/rock.jpg",
             "./assets/images/paper.jpg",
             "./assets/images/scissors.jpg",
             "./assets/images/lizard.jpg",
             "./assets/images/spock.jpg"],
         alt: [
-            "rpslsp",
             "rock",
             "paper",
             "scissors",
             "lizard",
             "spock"],
         Id: [
-            "rpslsp_1",
             "rock",
             "paper",
             "scissors",
             "lizard",
             "spock"]
     }
-
-
-
-
-
-
+    //------------------------------------------------
     // Game logic to determine winner of each round
     function gameLogic() {
         // ********* Rock
@@ -419,12 +416,28 @@ $(function () {
             ties++;
         }
     }
-
-
+    //------------------------------------------------
+    // // Name capture Button Click Player One
+    $("#addName").on("click", function () {
+        // Don't refresh the page!
+        event.preventDefault();
+        name = $("#nameInput").val().trim();
+        playerOneObj.name = name;
+        if (playerOneObj.name.length > 0) {
+            con.update({
+                name: playerOneObj.name
+            });
+            // DOM
+        }
+        DOMFunctions.joinGame();
+    });
+    //------------------------------------------------\
+    //------------------------------------------------
 
     $("#addName").on("click", function (e) {
         e.preventDefault()
         showImage = setInterval(DOMFunctions.nextImage, 1000);
+        $(".startImg").hide();
         $("#options1").show();
         $('#playerTurn').show();
     });
@@ -440,6 +453,19 @@ $(function () {
             turn: "Done"
         });
     });
+
+    $("#sendButton").on("click", function () {
+        // Don't refresh the page!
+        event.preventDefault();
+        var message = $("#messageInput");
+        var chatObj = {
+            message: message.val(),
+            timestamp: firebase.database.ServerValue.TIMESTAMP,
+            sender: playerOne.name,
+        };
+        chats.push(chatObj);
+        message.val(" ");
+    })
 
 
 });

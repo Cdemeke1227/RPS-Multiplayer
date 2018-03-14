@@ -99,7 +99,7 @@ body {
     margin-bottom: 20px;
     margin-right: 20px;
     margin-left: 20px;
-    height: 400px;
+    /* height: 400px; */
     background: white;
     border: 1px solid  #42b742;
     box-shadow: 0 0 1em .3em  #42b742;
@@ -112,12 +112,55 @@ body {
     background: black;
     box-shadow: inset 0 0 1em .3em  #42b742;
 }
+.startImg {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 40%;
+}
+#choice1Img {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 40%;
+}
+#choice2Img {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 40%;
+}
+#rpsImage {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    width: 40%;
+}
+.startImage {
+    height: 200px;
+}
+#rock {
+    height: 200px;
+  }
+  #paper {
+      height: 200px;
+  }
+  #scissors {
+      height: 200px;
+  }
+  #lizard {
+      height: 200px;
+  }
+  #spock {
+      height: 200px;
+  }
 .playerMid {
     margin-top: 20px;
     margin-bottom: 20px;
     background: black;
     box-shadow: inset 0 0 1em .3em  #42b742;
 }
+
 
 .playerTwoWindow {
     margin-top: 20px;
@@ -148,10 +191,13 @@ body {
     margin-bottom: 5px;
     margin-right: 20px;
     margin-left: 20px;
-    height: 130px;
+    /* height: 130px; */
     width: 100%;
     background: black;
     color: white;
+}
+.chatMessage {
+    margin-left: 20px;
 }
 #messageForm {
     margin-bottom: 10px;
@@ -172,44 +218,15 @@ body {
     width: 100%;
 }
 
-#rock {
-    margin-top: 40px;
-    margin-bottom: 30px;
-    margin-left: 25%;
-    width: 50%;
-}
-#paper {
-    margin-top: 40px;
-    margin-bottom: 30px;
-    margin-left: 25%;
-    width: 50%;
-}
-#scissors {
-    margin-top: 40px;
-    margin-bottom: 30px;
-    margin-left: 25%;
-    width: 50%;
-}
-#lizard {
-    margin-top: 40px;
-    margin-bottom: 30px;
-    margin-left: 25%;
-    width: 50%;
-}
-#spock {
-    margin-top: 40px;
-    margin-bottom: 30px;
-    margin-left: 25%;
-    width: 50%;
-}
+
 
 h1 {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: .5rem;
 }
 h2 {
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
     padding: .5rem;
 }
